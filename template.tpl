@@ -41,6 +41,10 @@ ___TEMPLATE_PARAMETERS___
     "macrosInSelect": false,
     "selectItems": [
       {
+        "value": "mParticle.Identity.identify",
+        "displayValue": "Identify"
+      },
+      {
         "value": "mParticle.Identity.login",
         "displayValue": "Login"
       },
@@ -265,6 +269,45 @@ ___WEB_PERMISSIONS___
                   {
                     "type": 1,
                     "string": "mParticle.Identity.modify"
+                  },
+                  {
+                    "type": 8,
+                    "boolean": false
+                  },
+                  {
+                    "type": 8,
+                    "boolean": false
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  }
+                ]
+              },
+              {
+                "type": 3,
+                "mapKey": [
+                  {
+                    "type": 1,
+                    "string": "key"
+                  },
+                  {
+                    "type": 1,
+                    "string": "read"
+                  },
+                  {
+                    "type": 1,
+                    "string": "write"
+                  },
+                  {
+                    "type": 1,
+                    "string": "execute"
+                  }
+                ],
+                "mapValue": [
+                  {
+                    "type": 1,
+                    "string": "mParticle.Identity.identify"
                   },
                   {
                     "type": 8,
