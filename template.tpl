@@ -41,6 +41,10 @@ ___TEMPLATE_PARAMETERS___
     "macrosInSelect": false,
     "selectItems": [
       {
+        "value": "mParticle.Identity.identify",
+        "displayValue": "Identify"
+      },
+      {
         "value": "mParticle.Identity.login",
         "displayValue": "Login"
       },
@@ -51,10 +55,6 @@ ___TEMPLATE_PARAMETERS___
       {
         "value": "mParticle.Identity.modify",
         "displayValue": "Modify"
-      },
-      {
-        "value": "mParticle.Identity.identify",
-        "displayValue": "Identify"
       }
     ],
     "simpleValueType": true,
