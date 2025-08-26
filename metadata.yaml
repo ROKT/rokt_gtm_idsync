@@ -15,6 +15,8 @@
 homepage: 'https://www.rokt.com'
 documentation: 'https://docs.rokt.com/docs/developers/integration-guides/third-party-integrations/google-tag-manager/google-tag-template'
 versions:
+  - sha: 0b07de90caa02b89bef0f7e09f6d7f265a3a14fe
+    changeNotes: Updated Identify UserIdentities
   - sha: eb9379a996e0f244a0239e012123213dec9985a0
     changeNotes: Add Identify event
   - sha: 515e1223d24c8145f231cde02e4ec6f763dba9d6 
