@@ -14,7 +14,7 @@ ___INFO___
   "version": 1,
   "securityGroups": [],
   "displayName": "mParticle by Rokt - IDSync Template",
-   "catagories": [
+  "catagories": [
     "MARKETING", 
     "ANALYTICS", 
     "PERSONALIZATION"
@@ -65,7 +65,7 @@ ___TEMPLATE_PARAMETERS___
     ],
     "help": "Please select the type of IDSync call you are making with this tag. Modify should be called sparingly. Please carefully read the full SDK documentation for further information."
   },
-    {
+  {
     "type": "GROUP",
     "name": "identifyOption",
     "displayName": "Identify Options",
@@ -220,11 +220,18 @@ var identityCallback = copyFromDataLayer('identityCallback');
 var identityRequest = { userIdentities: {} };
 
 if (data && data.eventType === "mParticle.Identity.identify") {
+  
+  var skip = {
+    eventType: 1,
+    gtmTagId: 1,
+    gtmEventId: 1,
+    gtmOnFailure: 1,
+    gtmOnSuccess: 1
+  };
+
   for (var key in data) {
-    if (data.hasOwnProperty(key)) {
-      if (key !== "eventType" && key !== "gtmTagId" && key !== "gtmEventId") {
-        identityRequest.userIdentities[key] = data[key];
-      }
+    if (data.hasOwnProperty(key) && !skip[key]) {
+      identityRequest.userIdentities[key] = data[key];
     }
   }
 }
