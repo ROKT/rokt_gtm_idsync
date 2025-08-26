@@ -64,6 +64,147 @@ ___TEMPLATE_PARAMETERS___
       }
     ],
     "help": "Please select the type of IDSync call you are making with this tag. Modify should be called sparingly. Please carefully read the full SDK documentation for further information."
+  },
+    {
+    "type": "GROUP",
+    "name": "identifyOption",
+    "displayName": "Identify Options",
+    "groupStyle": "ZIPPY_CLOSED",
+    "subParams": [
+      {
+        "type": "TEXT",
+        "name": "email",
+        "displayName": "Email",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "other",
+        "displayName": "Other",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "customerid",
+        "displayName": "Customer ID",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "other2",
+        "displayName": "Other 2",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "other3",
+        "displayName": "Other 3",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "other4",
+        "displayName": "Other 4",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "other5",
+        "displayName": "Other 5",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "other6",
+        "displayName": "Other 6",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "other7",
+        "displayName": "Other 7",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "other8",
+        "displayName": "Other 8",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "other9",
+        "displayName": "Other 9",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "other10",
+        "displayName": "Other 10",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "mobile_number",
+        "displayName": "Mobile Number",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "phone_number_2",
+        "displayName": "Phone Number 2",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "phone_number_3",
+        "displayName": "Phone Number 3",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "facebook",
+        "displayName": "Facebook",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "facebookcustomaudienceid",
+        "displayName": "Facebook Custom Audience ID",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "google",
+        "displayName": "Google",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "twitter",
+        "displayName": "Twitter",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "microsoft",
+        "displayName": "Microsoft",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "yahoo",
+        "displayName": "Yahoo",
+        "simpleValueType": true
+      }
+    ],
+    "enablingConditions": [
+      {
+        "paramName": "eventType",
+        "paramValue": "mParticle.Identity.identify",
+        "type": "EQUALS"
+      }
+    ]
   }
 ]
 
@@ -76,10 +217,17 @@ const callInWindow = require('callInWindow');
 
 var identityCallback = copyFromDataLayer('identityCallback');
 
-var identityRequest = {
-  userIdentities: copyFromDataLayer('userIdentities')
-}; 
+var identityRequest = { userIdentities: {} };
 
+if (data && data.eventType === "mParticle.Identity.identify") {
+  for (var key in data) {
+    if (data.hasOwnProperty(key)) {
+      if (key !== "eventType" && key !== "gtmTagId" && key !== "gtmEventId") {
+        identityRequest.userIdentities[key] = data[key];
+      }
+    }
+  }
+}
     
 if (data.eventType == "mParticle.Identity.logout") {
   callInWindow(data.eventType, {}, identityCallback); 
@@ -379,6 +527,13 @@ ___WEB_PERMISSIONS___
         "versionId": "1"
       },
       "param": [
+        {
+          "key": "allowedKeys",
+          "value": {
+            "type": 1,
+            "string": "specific"
+          }
+        },
         {
           "key": "keyPatterns",
           "value": {
