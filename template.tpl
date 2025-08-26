@@ -235,6 +235,9 @@ if (data && data.eventType === "mParticle.Identity.identify") {
     }
   }
 }
+else{
+  identityRequest.userIdentities = copyFromDataLayer('userIdentities');
+}
     
 if (data.eventType == "mParticle.Identity.logout") {
   callInWindow(data.eventType, {}, identityCallback); 
