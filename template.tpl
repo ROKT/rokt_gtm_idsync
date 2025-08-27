@@ -14,7 +14,7 @@ ___INFO___
   "version": 1,
   "securityGroups": [],
   "displayName": "mParticle by Rokt - IDSync Template",
-  "catagories": [
+  "categories": [
     "MARKETING", 
     "ANALYTICS", 
     "PERSONALIZATION"
