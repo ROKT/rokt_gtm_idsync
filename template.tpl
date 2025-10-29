@@ -248,7 +248,6 @@ if (data.eventType == "mParticle.Identity.logout") {
 
 
 
-log('mParticle: Script loaded successfully.');
 dataLayerPush({event:'roktIdSyncComplete'});
 data.gtmOnSuccess();
 
