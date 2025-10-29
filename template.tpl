@@ -214,6 +214,7 @@ ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 const log = require('logToConsole');
 const copyFromDataLayer = require('copyFromDataLayer'); 
 const callInWindow = require('callInWindow'); 
+const dataLayerPush = require('createQueue')('dataLayer');
 
 var identityCallback = copyFromDataLayer('identityCallback');
 
@@ -247,6 +248,7 @@ if (data.eventType == "mParticle.Identity.logout") {
 
 
 
+dataLayerPush({event:'roktIdSyncComplete'});
 data.gtmOnSuccess();
 
 
